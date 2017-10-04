@@ -18,8 +18,10 @@ class PersoType extends AbstractType
             ->add('facebook', TextType::class)
             ->add('github', TextType::class)
             ->add('codepen', TextType::class)
+            ->add('linkedin', TextType::class)
             ->add('tel', TextType::class)
             ->add('adresse', TextType::class);
+
     }
 
     public function getName(){

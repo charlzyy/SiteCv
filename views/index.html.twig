@@ -2,52 +2,259 @@
 
 {% block title %}Home{% endblock %}
 
+
 {% block content %}
 
-  <h1 class="row col-md-12">Articles</h1>
-    {% for article in articles %}
-      <article class="row col-md-6 tuile">
-          <h2><i class="fa fa-star" aria-hidden="true"></i> <a class="articleTitle" href="{{ path('article', { 'id': article.id }) }}">{{ article.title }}</a></h2>
-          <p>{{ article.content }}</p>
-      </article>
-    {% endfor %}
-  <h1 class="row col-md-12">Experiences</h1>
-  {% for experience in experiences %}
-    <article class="row col-md-6 tuile">
-        <h2><a class="articleTitle" href="{{ path('experience', { 'id': experience.id }) }}">{{ experience.poste }}</a></h2>
-        <p><em>{{ experience.debut }}</em> / <em>{{ experience.fin }}</em></p>
-        <div class="col-md-12">
-          <img src="{{ experience.img }}" title="{{ experience.title }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ experience.title }}">
+<!-- // Integration du front  -->
+<header class="masthead" >
+<div class="degrader">
+  <div class="photo"></div>
+  <div class="intro-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 mx-auto">
+          {% for perso in persos %}
+            <h2 class="brand-heading grossemargehaut">{{ perso.poste }} <span></span></h2>
+            <p class="pre"> {{ perso.prenom }} {{ perso.nom }}
+            <br><br>
+            <a href="#profile" class="btn btn-circle js-scroll-trigger">
+              <i class="fa fa-angle-double-down animated"></i>
+            </a>
+          {% endfor %}
         </div>
-        <h3>{{ experience.content }}</h3>
-    </article>
-  {% endfor %}
-  <h1 class="row col-md-12">Loisirs</h1>
-  {% for loisir in loisirs %}
-    <article class="row col-md-6 tuile">
-        <h2><a class="articleTitle" href="{{ path('loisir', { 'id': loisir.id }) }}">{{ loisir.title }}</a></h2>
-        <p>{{ loisir.content }}</p>
-    </article>
-  {% endfor %}
-  <h1 class="row col-md-12">Perso</h1>
-  {% for perso in persos %}
-    <article class="row col-md-6 tuile">
-        <h2><a class="articleTitle" href="{{ path('perso', { 'id': perso.id }) }}">{{ perso.nom }} {{ perso.prenom }}</a></h2>
-        <div class="col-md-12">
-          <img src="{{ perso.img }}" title="{{ perso.nom }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ perso.nom }}">
+      </div>
+    </div>
+  </div>
+  </div>
+</header>
+<section class=" bg-light margebas" id="team" style="min-height:1080px;">
+  <div class="container-fluid">
+    <div class="row justify-content-md-center">
+      <div class="col-md-12">
+        {% for perso in persos %}
+        <div class=" team-member">
+          <div id="profile" class="mx-auto rounded-circle">
+            <img class=" " src="{{ asset('/images/office/photoo.jpg') }}" alt="">
+          </div>
+          <h4>{{ perso.nom }} {{ perso.prenom }}</h4>
+          <p class="text-muted">Developpeur / Intégrateur Web</p>
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item">
+              <a href="{{perso.github}}">
+                <i class="fa fa-github"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="{{perso.facebook}}">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="{{perso.linkedin}}">
+                <i class="fa fa-linkedin"></i>
+              </a>
+            </li>
+          </ul>
         </div>
-        <p>{{ perso.adresse }}</p>
-        <p>{{ perso.tel }}</p>
-    </article>
-  {% endfor %}
-  <h1 class="row col-md-12">Portfolio</h1>
-  {% for portfolio in portfolios %}
-    <article class="row col-md-6 tuile">
-        <h2><a class="articleTitle" href="{{ path('portfolio', { 'id': portfolio.id }) }}">{{ portfolio.name }}</a></h2>
-        <div class="col-md-12">
-          <p>{{ portfolio.descriptif }}</p>
-          <img src="{{ portfolio.img }}" title="{{ portfolio.name }}" class="col-md-8 col-md-offset-2 img-thumbnail" alt="{{ portfolio.name }}">
+        {% endfor %}
+
+      </div>
+      <div class="col-md-4 ">
+        <div class="row justify-content-md-center">
+          <div class="col-md-8">
+            <h4 class="section-heading" style="text-align:center;">Profil</h4>
+            <p class="" style="margin-top:40px;">Passionné par le numérique  j’ai choisi de m’orienter vers le <span class="hightlight"> développement web</span>. Avide de connaissances je suis toujours a la recherche des dernières techniques pour améliorer mes créations.</p>
+            <p class="" style="margin-top:40px;">
+            Organisé, calme, ponctuel, j'adore m'investir dans de nouveaux défis!</p>
+            </div>
+          </div>
         </div>
-    </article>
-  {% endfor %}
-{% endblock %}
+        <div class="col-md-4">
+          <div class="col-md-12">
+            <h4 class="section-heading" style="text-align:center;">Mes competences</h4>
+          </div>
+          <div class="col-md-12">
+            <ul id="skills">
+              <li>
+                HTML5
+                <div class="bar_container">
+                  <span class="bar" data-bar='{ "color": "#19f" }'>
+                    <span class="pct">95%</span>
+                  </span>
+                </div>
+              </li>
+              <li>
+                CSS3
+                <div class="bar_container">
+                  <span class="bar" data-bar='{ "color": "#27ae60", "delay": 600 }'>
+                    <span class="pct">90%</span>
+                  </span>
+                </div>
+              </li>
+              <li>
+                Javascript
+                <div class="bar_container">
+                  <span class="bar" data-bar='{ "color": "#9b59b6", "delay": 1200 }'>
+                    <span class="pct">25%</span>
+                  </span>
+                </div>
+              </li>
+              <li>
+                Php
+                <div class="bar_container">
+                  <span class="bar" data-bar='{ "color": "#ae8a33", "delay": 1800 }'>
+                    <span class="pct">60%</span>
+                  </span>
+                </div>
+              </li>
+              <li>
+                WordPress
+                <div class="bar_container">
+                  <span class="bar" data-bar='{ "color": "#f05351", "delay": 2000 }'>
+                    <span class="pct">80%</span>
+                  </span>
+                </div>
+              </li>
+              <li>
+                bootstrap
+                <div class="bar_container">
+                  <span class="bar" data-bar='{ "color": "#8f1c6d", "delay": 2100 }'>
+                    <span class="pct">80%</span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="">
+  <!-- <div class="photo"></div> -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center" style="border: 5px solid white; margin-top:30px; margin-bottom:30px;">
+            <h2 class="section-heading marginn">mon parcours</h2>
+            <h2 class="section-subheading "> Experiences professionnelles  <br>
+          	</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 margmarg">
+            <ul class="timeline">
+              <li>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>2011</h4>
+                    <h4 class="subheading">Mission en street marketing </h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="">Paris</p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted">
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>2012</h4>
+                    <h4 class="subheading">Cap Serrurerie metallerie / Equipier polyvalent </h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="">CAP serrurerie metallerie chez Tordjman Metal a bobigny (93) / Equipier polyvalent chez Mc Donald's a paris (19ème)</p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>2013&harr;2017</h4>
+                    <h4 class="subheading">Restauration </h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="">Chef de rang , barman et commis de salle dans plusieurs restaurant tel que "Dans les Landes" Paris(5ème) , "Le Roméo" Paris (16ème) , "Les Jalles L'étage" et "Le Bistro Volnay" Paris (2ème) , "Le Coq" Paris (16ème) et "Le Grand Turenne" Paris (10ème)</p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted">
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>2017</h4>
+                    <h4 class="subheading">Formation Developpeur/Integrateur lepoleS</h4>
+                  </div>
+                  <div class="timeline-body" style="padding-bottom:100px;">
+                    <p class="">Actuellement en formation Dévellopeur/Intégrateur chez LepoleS a pantin(93)</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <p style="margin: 0 auto; margin-top:15px;">A suivre ...</p>
+        </div>
+      </div>
+    </section>
+
+  <!-- Slider -->
+<section class="paddinghaut">
+  <h2 id="realisation" class="paddingbas" style="text-align:center;">Mes réalisations</h2>
+  <div class="owl-carousel owl-theme">
+    <div class="item">
+      <a href="{{asset('/Site/moto/index.html')}}" target="_blank">
+        <img class="mx-auto " src="{{ asset('/images/moto.PNG') }}" alt="">
+      </a>
+    </div>
+    <div class="item">
+      <a href="{{asset('/Site/baya_voyage/assets/index.html')}}" target="_blank">
+        <img class="mx-auto" src="{{ asset('/images/baya5.PNG') }}" alt="">
+        <!-- <div class="inner"></div> -->
+      </a>
+    </div>
+    <div class="item">
+      <a href="{{asset('/Site/wordpress3/wordpress/index.php')}}" target="_blank">
+        <img class="mx-auto" src="{{ asset('/images/e-commerce2.PNG') }}" alt="">
+        <!-- <div class="inner"></div> -->
+      </a>
+    </div>
+    <div class="item black">
+      <a href="{{asset('/Site/carte_restaurant/index.html')}}" target="_blank">
+        <img class="mx-auto " src="{{ asset('/images/restaurant.PNG') }}" alt="">
+      </a>
+    </div>
+    <div class="item">
+      <a href="{{asset('/Site/iphone/index.html')}}" target="_blank">
+        <img class="mx-auto " src="{{ asset('/images/iphone.PNG') }}" alt="">
+      </a>
+    </div>
+    <div class="item black">
+      <a href="{{asset('/Site/japan_expo/index.html')}}" target="_blank">
+        <img class="mx-auto " src="{{ asset('/images/japan.PNG') }}" alt="">
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="padding-top color">
+    <div class="degrader">
+      <div class="photo"></div>
+      <section id="contact" class="bord color">
+        <div class="container">
+          <div class="row mid center-block">
+            <div class="col-lg-12  mgmg">
+              <h2 class="section-heading terter" style=" width:388px; padding-bottom:15px; margin-top:10px;"><i class="fa fa-hand-o-right" style="margin-right:6px;">  </i>Contactez-moi<i class="fa fa-hand-o-left" style="margin-left:12px;"></i> </h2>
+              <a href="mailto:charles.bergheaud@lepoles.com" class="open" title="Me contacter par mail" style="color: inherit;">
+                <i class="fa fa-envelope-o" aria-hidden="true" > charles.bergheaud@lepoles.com</i>
+              </a><br><br>
+              <i class="fa fa-map-marker"> 3 avenue du 8 mai 1945</i><br><br>
+              <i class="fa fa-globe" aria-hidden="true"> 93500 Pantin  France</i>
+              <br><br>
+              <i class="fa fa-phone" aria-hidden="true" > 06.58.66.63.14</i>
+            </div>
+        </div>
+      </div>
+    </section>
+</div>
+</footer>
+
+
+
+    {% endblock %}

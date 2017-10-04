@@ -57,6 +57,7 @@ class PersoDAO extends DAO
             'perso_codepen' => $perso->getCodepen(),
             'perso_tel' => $perso->getTel(),
             'perso_adresse' => $perso->getAdresse(),
+            'perso_linkedin' => $perso->getLinkedin(),
             );
 
         if ($perso->getId()) {
@@ -99,6 +100,7 @@ class PersoDAO extends DAO
         $perso->setImg($row['perso_img']);
         $perso->setTel($row['perso_tel']);
         $perso->setAdresse($row['perso_adresse']);
+        $perso->setLinkedin($row['perso_linkedin']);
         return $perso;
     }
 }

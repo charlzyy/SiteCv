@@ -27,6 +27,9 @@ class Perso
     // Facebook
     private $codepen;
 
+    // Linkedin
+    private $linkedin;
+
     // Github
     private $github;
 
@@ -57,6 +60,15 @@ class Perso
       $this->github = $github;
       return $this;
     }
+
+    public function getLinkedin(){
+      return $this->linkedin;
+    }
+    public function setLinkedin( $linkedin ){
+      $this->linkedin = $linkedin;
+      return $this;
+    }
+
     public function getGithub(){
       return $this->github;
     }
